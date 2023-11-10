@@ -4,7 +4,7 @@
             "outputFile": "com.example.empathi_care.app-mergeDebugResources-9:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DTI TLH\\Documents\\data yuda\\mobile-capstone\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "D:\\Data\\Kuliah\\mobile-capstone\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
