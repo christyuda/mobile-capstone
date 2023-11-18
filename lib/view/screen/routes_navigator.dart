@@ -18,12 +18,12 @@ class RoutesScreen extends StatefulWidget {
 class _RoutesScreenState extends State<RoutesScreen> {
   @override
   Widget build(BuildContext context) {
-    final navigation_provider = Provider.of<NavigationProvider>(context);
+    final navigationProvider = Provider.of<NavigationProvider>(context);
 
     return Scaffold(
       body: IndexedStack(
-        index: navigation_provider.currentIndex,
-        children: [
+        index: navigationProvider.currentIndex,
+        children: const [
           ScreenSatu(),
           ScreenDua(),
           ScreenTiga(),

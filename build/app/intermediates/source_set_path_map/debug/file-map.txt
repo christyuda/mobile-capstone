@@ -10,3 +10,4 @@ com.example.empathi_care.app-rs-8 D:\Data\Kuliah\mobile-capstone\build\app\gener
 com.example.empathi_care.app-mergeDebugResources-9 D:\Data\Kuliah\mobile-capstone\build\app\intermediates\incremental\debug\mergeDebugResources\merged.dir
 com.example.empathi_care.app-mergeDebugResources-10 D:\Data\Kuliah\mobile-capstone\build\app\intermediates\incremental\debug\mergeDebugResources\stripped.dir
 com.example.empathi_care.app-merged_res-11 D:\Data\Kuliah\mobile-capstone\build\app\intermediates\merged_res\debug
+com.example.empathi_care.app-packaged_res-12 D:\Data\Kuliah\mobile-capstone\build\path_provider_android\intermediates\packaged_res\debug
