@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:empathi_care/view/screen/list_artikel_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,6 +9,7 @@ class ScreenSatu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context).size;
+    // final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -20,11 +22,9 @@ class ScreenSatu extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _buildHeader(media),
-              _buildPremiumCounseling(),
-              // _buildRecommendations(media),
-              // _buildVouchers(media),
-              // _buildArticles(),
+              _buildHeader(media, context),
+              // _buildPremiumCounseling(),
+              // _buildArticles(media),
             ],
           ),
         ),
@@ -32,7 +32,7 @@ class ScreenSatu extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(Size media) {
+  Widget _buildHeader(Size media, context) {
     return Container(
       width: double.infinity,
       height: media.height,
@@ -46,8 +46,9 @@ class ScreenSatu extends StatelessWidget {
           _buildRecommendationsCarousel(media),
           _buildVoucherTitle(),
           _buildVoucherCarousel(media),
-          // _buildArticleTitle(),
-          // _buildArticleCarousel(),
+          _buildArticleTitle(),
+          _buildArticleCarousel(media),
+          _buildViewAllButton(context),
         ],
       ),
     );
@@ -186,11 +187,6 @@ class ScreenSatu extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Widget _buildPremiumCounseling() {
-    // Your premium counseling widget content goes here
-    return Container();
   }
 
   Widget _buildRecommendationsTitle() {
@@ -376,41 +372,107 @@ class ScreenSatu extends StatelessWidget {
     );
   }
 
-  // Widget _buildArticleTitle() {
-  //   return Positioned(
-  //     top: 660,
-  //     left: 20,
-  //     child: Column(
-  //       crossAxisAlignment: CrossAxisAlignment.start,
-  //       children: [
-  //         Text(
-  //           'Artikel',
-  //           style: TextStyle(
-  //             fontSize: 16,
-  //             fontWeight: FontWeight.bold,
-  //             color: Colors.black,
-  //           ),
-  //         ),
-  //         SizedBox(height: 10),
-  //       ],
-  //     ),
-  //   );
-  // }
+  Widget _buildViewAllButton(BuildContext context) {
+    return Positioned(
+      top: 660,
+      right: 30,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AllArticlesPage()),
+          );
+        },
+        child: Text(
+          'Lihat Semua',
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.bold,
+            color: Colors.blue,
+          ),
+        ),
+      ),
+    );
+  }
 
-//   Widget _buildArticleCarousel() {
-//     return CarouselSlider(
-//       options: CarouselOptions(
-//         height: 150,
-//         enableInfiniteScroll: false,
-//         autoPlay: false,
-//         enlargeCenterPage: true,
-//       ),
-//       items: [
-//         ArticleCard(imagePath: 'assets/img/article.png', title: 'Article 1'),
-//         ArticleCard(imagePath: 'assets/img/article.png', title: 'Article 2'),
-//         // Add more cards as needed
-//       ],
-//     );
-//   }
-// }
+  Widget _buildArticles(Size media) {
+    return Column(
+      children: [
+        _buildArticleTitle(),
+        _buildArticleCarousel(media),
+      ],
+    );
+  }
+
+  Widget _buildArticleTitle() {
+    return const Positioned(
+      top: 660,
+      left: 30,
+      child: Text(
+        'Artikel',
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildArticleCarousel(Size media) {
+    return Positioned(
+      top: 690,
+      left: 0,
+      right: 0,
+      child: Container(
+        width: media.width,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: List.generate(
+              3,
+              (index) => _buildArticleItem(
+                'assets/img/article.png',
+                'Title ${index + 1} is a long title that goes on and on to see if it wraps correctly.',
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildArticleItem(String imagePath, String title) {
+    return Container(
+      width: 170,
+      margin: EdgeInsets.only(left: 40, right: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 170,
+            height: 120,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SizedBox(height: 10),
+          Container(
+            width: 140,
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black45,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

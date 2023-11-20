@@ -1,4 +1,4 @@
-#Sat Nov 18 23:40:41 WIB 2023
+#Mon Nov 20 20:50:30 WIB 2023
 base.0=D\:\\Data\\Kuliah\\mobile-capstone\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
